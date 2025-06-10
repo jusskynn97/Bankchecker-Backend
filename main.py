@@ -11,7 +11,10 @@ from typing import List, Dict
 import uuid
 import shutil
 from pathlib import Path
+from dotenv import load_dotenv
 
+
+load_dotenv()
 app = FastAPI()
 
 origins = [
@@ -109,7 +112,7 @@ bank_map = {
 
 @app.get("/")
 def home():
-    return {"message": "Bank Account Validator API"}
+    return {"message": os.getenv("ACCOUNT")}
 
 @app.post("/check-file")
 async def check_file(file: UploadFile = File(...)):
@@ -148,7 +151,7 @@ async def check_file(file: UploadFile = File(...)):
         results = {"valid": [], "invalid": []}
 
         # Initialize MBBank
-        mb = MBBank(username="0943525578", password="Krisktan5436*****")
+        mb = MBBank(username=os.getenv("ACCOUNT"), password=os.getenv("PASSWORD"))
 
         # Process each account
         for index, row in df_filtered.iterrows():
