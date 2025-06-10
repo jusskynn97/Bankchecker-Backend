@@ -2,6 +2,8 @@
 *.log
 *.pyc
 __pycache__
+test.py
+temp_files
 
 # Environments 
 .env 
