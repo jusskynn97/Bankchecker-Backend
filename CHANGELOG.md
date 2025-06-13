@@ -1,3 +1,15 @@
+# v0.0.2 (Fri Jun 13 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: reload git branch ([@tk97code](https://github.com/tk97code))
+
+#### Authors: 1
+
+- allanMartin ([@tk97code](https://github.com/tk97code))
+
+---
+
 # v0.0.1 (Fri Jun 13 2025)
 
 :tada: This release contains work from a new contributor! :tada:
