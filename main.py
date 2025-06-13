@@ -22,7 +22,11 @@ logger = logging.getLogger(__name__)
 
 origins = [
     "http://localhost:3000",
+<<<<<<< HEAD
     "https://bankchecker.netlify.app/",
+=======
+    "https://bankchecker.netlify.app",
+>>>>>>> 80fb7641c9fe33ddc2c7a69596d4c550cb8570f8
 ]
 
 app.add_middleware(
