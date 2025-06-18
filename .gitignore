@@ -2,11 +2,8 @@
 *.log
 *.pyc
 __pycache__
-<<<<<<< HEAD
 test.py
 temp_files
-=======
->>>>>>> fa9292da053381ffb1e32ec7808a5cf49b00660e
 
 # Environments 
 .env 
@@ -15,8 +12,4 @@ env/
 venv/ 
 ENV/ 
 env.bak/ 
-<<<<<<< HEAD
 venv.bak/ 
-=======
-venv.bak/ 
->>>>>>> fa9292da053381ffb1e32ec7808a5cf49b00660e
