@@ -63,8 +63,10 @@ def clean_account_number(account_number):
     account_str = str(account_number)
     if account_str.endswith('.0'):
         account_str = account_str[:-2]
+    # Remove non-digits but preserve the original string format
     account_str = re.sub(r'[^\d]', '', account_str)
     return account_str.strip()
+
 
 bank_map = {
   "314": "970441",
@@ -253,7 +255,12 @@ async def check_file(file: UploadFile = File(...)):
             with open(file_path, "wb") as buffer:
                 shutil.copyfileobj(file.file, buffer)
 
-            df = pd.read_excel(file_path, skiprows=3)
+            df = pd.read_excel(
+                file_path, 
+                skiprows=3,
+                dtype={2: str}  # Assuming account number is in column 2 (0-indexed)
+            )
+
             df_filtered = df[
                 (df.iloc[:, 1].notna()) &
                 (df.iloc[:, 1] != '') &
@@ -263,8 +270,8 @@ async def check_file(file: UploadFile = File(...)):
                 (df.iloc[:, 5] != '')
             ].copy()
 
-            if len(df_filtered) > 50:
-                raise HTTPException(status_code=400, detail="File exceeds maximum row limit of 50")
+            # if len(df_filtered) > 50:
+            #     raise HTTPException(status_code=400, detail="File exceeds maximum row limit of 50")
 
             df_filtered['Ma_Ngan_Hang'] = df_filtered.iloc[:, 5].astype(str).str.split('-').str[0].str.strip()
 
